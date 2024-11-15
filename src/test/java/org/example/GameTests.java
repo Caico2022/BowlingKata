@@ -32,7 +32,7 @@ public class GameTests {
     }
 
     @Test
-    void canScoreSpareFollowedBy3ThenGutters() {
+    void canScoreSpareFollowedBy3ThenZeros() {
         game.rollBall(5);
         game.rollBall(5);
         game.rollBall(3);
@@ -41,4 +41,6 @@ public class GameTests {
         }
         assertEquals(16, game.score());
     }
+
+
 }
