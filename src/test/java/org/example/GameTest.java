@@ -22,4 +22,13 @@ class GameTest {
         assertEquals(0, game.score());
     }
 
+    @Test
+    void canScoreOnlyOnes() {
+        for (int i = 0; i < 20; i++) {
+            game.throwBall(1);
+        }
+        assertEquals(20, game.score());
+    }
+
+
 }

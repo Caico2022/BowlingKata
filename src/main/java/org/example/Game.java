@@ -2,13 +2,15 @@ package org.example;
 
 public class Game {
 
-    public void throwBall(int pinsDown) {
+    private int score = 0;
 
+    public void throwBall(int pinsDown) {
+        score += pinsDown;
     }
 
     public int score() {
 
-        return 0;
+        return score;
     }
 
 }
