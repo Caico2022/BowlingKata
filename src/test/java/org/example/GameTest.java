@@ -110,7 +110,6 @@ class GameTest {
         assertEquals(29, game.score());
     }
 
-
     @Test
     void canScoreStrikesAndSparesAndNormalFrames() {
         // Frame1 Strike: 10 + 10 = 20
@@ -141,5 +140,27 @@ class GameTest {
         // Gesamt: 20 + 15 + 21 + 20 + 18 + 16 + 20 = 130
         assertEquals(130, game.score());
     }
+
+    // ************** Unvollständige Spiele **************
+    // Werden als 0-Punkte-Frames behandelt, da rolls mit Nullen gefüllt ist
+    @Test
+    void canScoreWithNormalFramesThenNothing() {
+        game.throwBall(5);
+        game.throwBall(4);
+        game.throwBall(6);
+        assertEquals(15, game.score());
+    }
+    @Test
+    void canScoreWithStrikeThenNothing() {
+        game.throwBall(10);
+        assertEquals(10, game.score());
+    }
+    @Test
+    void canScoreWithSpareThenNothing() {
+        game.throwBall(5);
+        game.throwBall(5);
+        assertEquals(10, game.score());
+    }
+
 
 }
