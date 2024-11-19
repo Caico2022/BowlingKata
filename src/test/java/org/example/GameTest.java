@@ -68,4 +68,15 @@ class GameTest {
         assertEquals(300, game.score());
     }
 
+    @Test
+    void canScoreOnlySpares() {
+        for (int i = 0; i < 21; i++) {
+            game.throwBall(5);
+        }
+        // Frame1: 5 + 5 + 5 = 15
+        // ...
+        // Frame 10: 5 + 5 + Bonuswurf(5) = 15
+        assertEquals(150, game.score());
+    }
+
 }

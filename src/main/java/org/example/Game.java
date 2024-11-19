@@ -5,6 +5,8 @@ import java.util.Arrays;
 public class Game {
 
     private int roll = 0;
+    // Bei einem Spare im letzten Frame ein Bonuswurf möglich
+    // Bei Strikes wird der zweite Wurf übersprungen und nicht im Array angezeigt
     private final int[] rolls = new int[21];
 
 
