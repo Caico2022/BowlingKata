@@ -56,4 +56,16 @@ class GameTest {
         assertEquals(22, game.score());
     }
 
+    @Test
+    void canScoreOnlyStrikes() {
+        // Bei Strike im letzten Frame zwei Bonuswürfe
+        for (int i = 0; i < 12; i++) {
+            game.throwBall(10);
+        }
+        // Frame1: 10 + 10 + 10 = 30
+        // ...
+        // Frame 10: 10 + Bonuswurf1(10) + Bonuswurf2(10) = 30
+        assertEquals(300, game.score());
+    }
+
 }
