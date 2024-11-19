@@ -162,5 +162,25 @@ class GameTest {
         assertEquals(10, game.score());
     }
 
+    // ************** Falsche Eingaben **************
+    // Negative Zahlen werden einfach subtrahiert statt addiert
+    @Test
+    void canScoreWithNegativePins() {
+        game.throwBall(-1);
+        assertEquals(-1, game.score());
+    }
+
+    @Test
+    void canScoreWithNegativePinsAndSpare() {
+        game.throwBall(-1);
+        game.throwBall(11);
+        for (int i = 0; i < 18; i++) {
+            game.throwBall(1);
+        }
+        // Frame1: -1 + 11 + 1 = 11
+        // Frame2-10: 2 * 9 = 18
+        assertEquals(29, game.score());
+    }
+
 
 }
