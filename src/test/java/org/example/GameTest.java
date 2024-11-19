@@ -79,4 +79,22 @@ class GameTest {
         assertEquals(150, game.score());
     }
 
+    @Test
+    void canScoreOnly9With0() {
+        for (int i = 0; i < 10; i++) {
+            game.throwBall(9);
+            game.throwBall(0);
+        }
+        assertEquals(90, game.score());
+    }
+
+    @Test
+    void canScoreOnly0With9() {
+        for (int i = 0; i < 10; i++) {
+            game.throwBall(0);
+            game.throwBall(9);
+        }
+        assertEquals(90, game.score());
+    }
+
 }
