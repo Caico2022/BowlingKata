@@ -30,5 +30,17 @@ class GameTest {
         assertEquals(20, game.score());
     }
 
+    @Test
+    void canScoreSpareThen3ThenOnlyZeros() {
+        game.throwBall(5);
+        game.throwBall(5);
+        game.throwBall(3);
+        for (int i = 0; i < 17; i++) {
+            game.throwBall(0);
+        }
+        // Frame1: 10 + 3 = 13
+        // Frame2: 3 + 0 = 3
+        assertEquals(16, game.score());
+    }
 
 }
