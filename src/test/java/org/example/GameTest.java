@@ -110,4 +110,36 @@ class GameTest {
         assertEquals(29, game.score());
     }
 
+
+    @Test
+    void canScoreStrikesAndSparesAndNormalFrames() {
+        // Frame1 Strike: 10 + 10 = 20
+        game.throwBall(10);
+        // Frame2 Spare: 10 + 5 = 15
+        game.throwBall(5);
+        game.throwBall(5);
+        // Frame3-5 Normal: 7 · 3 = 21
+        for (int i = 0; i < 3; i++) {
+            game.throwBall(5);
+            game.throwBall(2);
+        }
+        // Frame6 Spare: 2 + 8 + 10 = 20
+        game.throwBall(2);
+        game.throwBall(8);
+        // Frame7 Strike: 10 + 1 + 7 = 18
+        game.throwBall(10);
+        // Frame8-9 Normal: 8 · 2 = 16
+        for (int i = 0; i < 2; i++) {
+            game.throwBall(1);
+            game.throwBall(7);
+        }
+        // Frame10 Spare: 10 + 10 = 20
+        game.throwBall(7);
+        game.throwBall(3);
+        game.throwBall(10); // Bonuswurf
+
+        // Gesamt: 20 + 15 + 21 + 20 + 18 + 16 + 20 = 130
+        assertEquals(130, game.score());
+    }
+
 }
