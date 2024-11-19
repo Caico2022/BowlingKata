@@ -97,4 +97,17 @@ class GameTest {
         assertEquals(90, game.score());
     }
 
+    @Test
+    void canScoreStrikeThenSpareInLastFrameOnly() {
+        for (int i = 0; i < 9; i++) {
+            game.throwBall(1);
+        }
+        game.throwBall(10); // Frame10
+        game.throwBall(7); // Bonuswurf 1
+        game.throwBall(3); // Bonuswurf 2
+        // Frame 1-9: 9 · 1 = 9
+        // Frame 10: 10 + Bonuswurf(7) + Bonuswurf(3) = 20
+        assertEquals(29, game.score());
+    }
+
 }
