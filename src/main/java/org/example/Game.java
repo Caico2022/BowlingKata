@@ -24,6 +24,11 @@ public class Game {
                 score += 10 + rolls[cursor + 2];
                 cursor += 2;
             }
+            else if (rolls[cursor] == 10) { // Strike
+                score += 10 + rolls[cursor + 1] + rolls[cursor + 2];
+                // Bei einem Strike wird der zweite Wurf desselben Frames ausgelassen
+                cursor += 1;
+            }
             else {
                 score += rolls[cursor] + rolls[cursor + 1];
                 cursor += 2;

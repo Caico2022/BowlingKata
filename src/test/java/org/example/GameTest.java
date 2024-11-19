@@ -43,4 +43,17 @@ class GameTest {
         assertEquals(16, game.score());
     }
 
+    @Test
+    void canScoreStrikeThenTwo3ThenOnlyZeros() {
+        game.throwBall(10);
+        game.throwBall(3);
+        game.throwBall(3);
+        for (int i = 0; i < 16; i++) {
+            game.throwBall(0);
+        }
+        // Frame1: 10 + 3 + 3 = 16
+        // Frame2: 3 + 3 = 6
+        assertEquals(22, game.score());
+    }
+
 }
