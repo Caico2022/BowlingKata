@@ -182,5 +182,27 @@ class GameTest {
         assertEquals(29, game.score());
     }
 
+    // ************** Zu viele Würfe **************
+    @Test
+    void canScore21ThrowsInAllNormalFrames() {
+        for (int i = 0; i < 21; i++) {
+            game.throwBall(2);
+        }
+        /* rolls wird zwar bis 21 Würfe gefüllt, jedoch werden nur die
+        ersten 10 Frames (20 Würfe) berechnet, weil kein Spare vorliegt. */
+        assertEquals(40, game.score());
+    }
+
+    @Test
+    void canScore22ThrowsInAllNormalFrames() {
+        for (int i = 0; i < 21; i++) {
+            game.throwBall(2);
+        }
+        ArrayIndexOutOfBoundsException exception =
+                assertThrows(ArrayIndexOutOfBoundsException.class, () -> game.throwBall(2));
+        assertTrue(exception.getMessage().contains("Index 21 out of bounds"));
+    }
+
+
 
 }
